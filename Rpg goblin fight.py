@@ -1,5 +1,6 @@
 import random
 import time
+from itertools import count
 
 RED = "\033[91m"
 GREEN = "\033[92m"
@@ -102,8 +103,13 @@ while PlayerHP > 0 and GoblinHP > 0:
 					print(f"{RED} pressed wrong key, arrow slipped out.{END}")
 					if slip == 67:
 						print(
-							f"{PURPLE} wow a miracle, since the arrow slipped, it landed onto your foot, split atoms. this was a 1 in 100 hundred chance for you to explode after this action, say goodbye to your body and the goblins.{END} "
+							## cool easter egg
+							f"{PURPLE} wow a miracle, since the arrow slipped, it landed onto your foot and split atoms. There was a 1 in 100 chance for you to explode after this action, say goodbye to your body and the goblin.{END} "
 						)
+						for i in range(10, 0, -1):
+							print("nuking everything in", i)
+							time.sleep(1)
+						print("boom")
 						PlayerHP = 0
 						GoblinHP = 0
 						break
@@ -129,7 +135,7 @@ while PlayerHP > 0 and GoblinHP > 0:
 					)
 					time.sleep(1)
 					print("ready..")
-					time.sleep(random.randint(1, 3))
+					time.sleep(random.randint(2, 7))
 					print(f"{PURPLE}{BOLD}SLICE{END}")
 
 					Stopwatch = time.time()
@@ -241,9 +247,14 @@ while PlayerHP > 0 and GoblinHP > 0:
 			GoblinHP = 125
 			PlayerHP = 100
 			HasHand = True
+			if inventory == [""]:
+				inventory.append("Potion")
+				inventory.append("Potion")
+			elif inventory == ["Potion"]:
+				inventory.append("Potion")
 			continue
 
 ### TODO LIST:
 # add a shield where it blocks all damage or probably weakens it
 # finish the text coloring
-# more debugging if needed, send to testers to test further 
+# more debugging if needed, send to testers to test fur
